@@ -2,6 +2,7 @@
 This bot listens for incoming connections from Facebook. It takes
 in any messages that the bot receives and echos it back.
 """
+import os
 from flask import Flask, request
 from pymessenger.bot import Bot
 
