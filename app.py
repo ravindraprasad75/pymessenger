@@ -21,7 +21,7 @@ def hello():
                 return "Verification token mismatch", 403
             return request.args["hub.challenge"], 200
 
-        return "Hello world 2", 200
+        return "Hello world 3", 200
 
     if request.method == 'POST':
         output = request.get_json()
