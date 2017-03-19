@@ -7,18 +7,20 @@ from pymessenger.bot import Bot
 
 app = Flask(__name__)
 
-ACCESS_TOKEN = ""
-VERIFY_TOKEN = ""
+ACCESS_TOKEN = os.environ["FB_ACCESS_TOKEN"]
+
 bot = Bot(ACCESS_TOKEN)
 
 
 @app.route("/", methods=['GET', 'POST'])
 def hello():
     if request.method == 'GET':
-        if request.args.get("hub.verify_token") == VERIFY_TOKEN:
-            return request.args.get("hub.challenge")
-        else:
-            return 'Invalid verification token'
+        if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
+            if not request.args.get("hub.verify_token") == os.environ["FB_VERIFY_TOKEN"]:
+                return "Verification token mismatch", 403
+            return request.args["hub.challenge"], 200
+
+        return "Hello world", 200
 
     if request.method == 'POST':
         output = request.get_json()
