@@ -27,14 +27,14 @@ def hello():
         output = request.get_json()
         for event in output['entry']:
             messaging = event['messaging']
-            for x in messaging:
-                if x.get('message'):
-                    recipient_id = x['sender']['id']
-                    if x['message'].get('text'):
-                        message = x['message']['text']
+            for messaging_event in messaging:
+                if messaging_event.get('message'):
+                    recipient_id = messaging_event['sender']['id']
+                    if messaging_event['message'].get('text'):
+                        message = messaging_event['message']['text']
                         bot.send_text_message(recipient_id, message)
-                    if x['message'].get('attachments'):
-                        for att in x['message'].get('attachments'):
+                    if messaging_event['message'].get('attachments'):
+                        for att in messaging_event['message'].get('attachments'):
                             bot.send_attachment_url(recipient_id, att['type'], att['payload']['url'])
                 else:
                     pass
