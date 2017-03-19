@@ -12,6 +12,13 @@ ACCESS_TOKEN = os.environ["FB_ACCESS_TOKEN"]
 
 bot = Bot(ACCESS_TOKEN)
 
+buttons = [{
+    "type":"web_url",
+    "url":"https://cdn-images-1.medium.com/max/800/1*LkbHjhacSRDNDzupX7pgEQ.jpeg",
+    "title":"View Item",
+    "webview_height_ratio": "compact"
+        }]
+
 
 @app.route("/", methods=['GET', 'POST'])
 def hello():
@@ -21,7 +28,7 @@ def hello():
                 return "Verification token mismatch", 403
             return request.args["hub.challenge"], 200
 
-        return "Hello world 5", 200
+        return "Hello world 4", 200
 
     if request.method == 'POST':
         output = request.get_json()
@@ -33,6 +40,12 @@ def hello():
                     if messaging_event['message'].get('text'):
                         message = messaging_event['message']['text']
                         bot.send_text_message(recipient_id, message)
+
+                    if messaging_event['message'].get('text'):
+                        message = messaging_event['message']['text']
+                        if message == "button":
+                            bot.send_button_message(recipient_id, message, buttons)
+
                     if messaging_event['message'].get('attachments'):
                         for att in messaging_event['message'].get('attachments'):
                             bot.send_attachment_url(recipient_id, att['type'], att['payload']['url'])
