@@ -51,12 +51,13 @@ def hello():
                         message = messaging_event['message']['text']
                         if message == "button":
                             bot.send_button_message(recipient_id, message, buttons)
-                        if payload == 'USER_START_QUERY':
+                        
+                        ''' if payload == 'USER_START_QUERY':
                             message = "clicked on start query"
                             bot.send_text_message(recipient_id, message)
                         elif payload == 'USER_THANK_YOU':
                             message = "clicked on thank you"
-                            bot.send_text_message(recipient_id, message)
+                            bot.send_text_message(recipient_id, message) '''
 
                     #if messaging_event['message'].get('attachments'):
                     #    for att in messaging_event['message'].get('attachments'):
