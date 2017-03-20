@@ -17,7 +17,13 @@ buttons = [{
             "type":"postback",
             "title":"Start Query",
             "payload":"USER_START_QUERY"
-          }]
+          },
+            {
+            "type":"postback",
+            "title":"Say Thank you",
+            "payload":"USER_THANK_YOU"
+          }
+            ]
 
 
 @app.route("/", methods=['GET', 'POST'])
