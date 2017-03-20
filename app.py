@@ -12,6 +12,7 @@ ACCESS_TOKEN = os.environ["FB_ACCESS_TOKEN"]
 
 bot = Bot(ACCESS_TOKEN)
 
+# ADD BUTTON AS FIRST ENTRY
 buttons = [{
             "type":"postback",
             "title":"Start Query",
