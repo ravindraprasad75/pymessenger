@@ -46,9 +46,9 @@ def hello():
                         if message == "button":
                             bot.send_button_message(recipient_id, message, buttons)
 
-                    if messaging_event['message'].get('attachments'):
-                        for att in messaging_event['message'].get('attachments'):
-                            bot.send_attachment_url(recipient_id, att['type'], att['payload']['url'])
+                    #if messaging_event['message'].get('attachments'):
+                    #    for att in messaging_event['message'].get('attachments'):
+                    #        bot.send_attachment_url(recipient_id, att['type'], att['payload']['url'])
                 else:
                     pass
         return "Success"
