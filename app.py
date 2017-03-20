@@ -54,7 +54,7 @@ def hello():
                         if payload == 'USER_START_QUERY':
                             message = "clicked on start query"
                             bot.send_text_message(recipient_id, message)
-                        elif payload == 'USER_THANK_YOU'
+                        elif payload == 'USER_THANK_YOU':
                             message = "clicked on thank you"
                             bot.send_text_message(recipient_id, message)
 
