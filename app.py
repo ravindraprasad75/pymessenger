@@ -13,11 +13,10 @@ ACCESS_TOKEN = os.environ["FB_ACCESS_TOKEN"]
 bot = Bot(ACCESS_TOKEN)
 
 buttons = [{
-    "type":"web_url",
-    "url":"https://cdn-images-1.medium.com/max/800/1*LkbHjhacSRDNDzupX7pgEQ.jpeg",
-    "title":"View Item",
-    "webview_height_ratio": "compact"
-        }]
+            "type":"postback",
+            "title":"Start Query",
+            "payload":"USER_START_QUERY"
+          }]
 
 
 @app.route("/", methods=['GET', 'POST'])
